@@ -24,7 +24,7 @@ BuildRequires:	libxslt-devel >= 1.0.33
 BuildRequires:	libglade2.0-devel
 BuildRequires:	perl-XML-Parser
 BuildRequires:	gtkmm2.4-devel
-BuildRequires:	gtksourceview-devel >= 1.0
+BuildRequires:	pkgconfig(gtksourceview-1.0)
 BuildRequires:	libglademm-devel >= 2.4.0
 BuildRequires:	libvte-devel >= 0.11.12
 BuildRequires:	libexpat-devel
