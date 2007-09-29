@@ -1,5 +1,5 @@
 %define	version	0.9.0
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define major	10
 %define libname %mklibname %{name} %{major}
@@ -68,10 +68,11 @@ cat << _EOF_ > %{buildroot}%{_menudir}/%{name}
  xdg="true"
 _EOF_
 
+sed -i s/mlview-app-icon.xpm/mlview-app-icon/ $RPM_BUILD_ROOT%{_datadir}/applications/*
+
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="TextEditor" \
-  --add-category="X-MandrivaLinux-MoreApplications-Editors" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 %find_lang %{name}
