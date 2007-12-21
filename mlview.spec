@@ -11,6 +11,7 @@ Release:	%{release}
 License:	GPL
 Group:		Editors
 URL:		http://mlview.org/
+Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 Source:		ftp://ftp.gnome.org/pub/gnome/sources/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		mlview-0.9.0-gcc411.patch.bz2
