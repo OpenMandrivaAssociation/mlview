@@ -56,17 +56,6 @@ libmlview is the essential library needed by the mlview application.
 rm -rf %{buildroot}
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
 
-mkdir -p %{buildroot}%{_menudir}
-cat << _EOF_ > %{buildroot}%{_menudir}/%{name}
-?package(%{name}): \
- command="%{_bindir}/mlview" \
- icon="editors_section.png" \
- longtitle="Tree oriented XML editor" \
- needs="x11" \
- section="Applications/Editors" \
- title="MlView XML editor" \
- xdg="true"
-_EOF_
 
 sed -i s/mlview-app-icon.xpm/mlview-app-icon/ $RPM_BUILD_ROOT%{_datadir}/applications/*
 
@@ -113,7 +102,6 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}
 %{_datadir}/mime-info/*
 %{_datadir}/application-registry/*
-%{_menudir}/%{name}
 %{_libdir}/mlview/plugins/*
 %files -n %{libname}
 %defattr(-,root,root)
