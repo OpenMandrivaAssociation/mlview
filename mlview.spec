@@ -75,15 +75,19 @@ rm -f %{buildroot}%{_libdir}/lib*.a \
       %{buildroot}%{_libdir}/mlview/plugins/lib*.la \
       %{buildroot}%{_libdir}/mlview/plugins/lib*.so
 
+%if %mdkversion < 200900
 %post
 %post_install_gconf_schemas mlview.schemas
 %update_menus
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas mlview.schemas
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
