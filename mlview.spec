@@ -1,5 +1,5 @@
 %define	version	0.9.0
-%define release %mkrel 6
+%define release %mkrel 7
 
 %define major	10
 %define libname %mklibname %{name} %{major}
@@ -8,13 +8,16 @@ Summary:	Tree oriented XML editor for GNOME
 Name:		mlview
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2+
 Group:		Editors
 URL:		http://mlview.org/
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 Source:		ftp://ftp.gnome.org/pub/gnome/sources/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		mlview-0.9.0-gcc411.patch.bz2
+Patch1:		mlview-0.9.0-fix-gcc-43.patch
+Patch2:         mlview-0.9.0-fix-str-fmt.patch
+Patch3:		mlview-0.9.0-fix-underlinking.patch
 
 BuildRequires:	libgnomeui2-devel >= 2.2.0
 BuildRequires:	eel-devel >= 2.2.0
@@ -46,6 +49,9 @@ libmlview is the essential library needed by the mlview application.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1 -b .gcc43
+%patch2 -p1 -b .strfmt
+%patch3 -p0
 
 %build
 %configure2_5x 
