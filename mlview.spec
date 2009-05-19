@@ -1,5 +1,5 @@
 %define	version	0.9.0
-%define release %mkrel 7
+%define release %mkrel 8
 
 %define major	10
 %define libname %mklibname %{name} %{major}
@@ -63,9 +63,10 @@ rm -rf %{buildroot}
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
 
 
-sed -i s/mlview-app-icon.xpm/mlview-app-icon/ $RPM_BUILD_ROOT%{_datadir}/applications/*
+sed -i -e "s/mlview-app-icon.xpm/mlview-app-icon/" -e "s/mlv/mlview/" $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 desktop-file-install --vendor="" \
+  --remove-key=TryExec \
   --remove-category="Application" \
   --add-category="TextEditor" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
