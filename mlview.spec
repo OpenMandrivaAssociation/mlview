@@ -14,20 +14,22 @@ URL:		http://mlview.org/
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 Source:		ftp://ftp.gnome.org/pub/gnome/sources/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		mlview-0.9.0-gcc411.patch.bz2
+Patch0:		mlview-0.9.0-gcc411.patch
 Patch1:		mlview-0.9.0-fix-gcc-43.patch
 Patch2:         mlview-0.9.0-fix-str-fmt.patch
 Patch3:		mlview-0.9.0-fix-underlinking.patch
-
+Patch4:		mlview-0.9.0-gcc45.patch
+Patch5:		mlview-0.9.0-gtksourceview2.patch
+Patch6:		mlview-0.9.0-ac_version.patch
+Patch7:		mlview-0.9.0-install.patch
 BuildRequires:	libgnomeui2-devel >= 2.2.0
-BuildRequires:	eel-devel >= 2.2.0
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libxml2-devel >= 2.4.30
 BuildRequires:	libxslt-devel >= 1.0.33
 BuildRequires:	libglade2.0-devel
 BuildRequires:	perl-XML-Parser
 BuildRequires:	gtkmm2.4-devel
-BuildRequires:	pkgconfig(gtksourceview-1.0)
+BuildRequires:	pkgconfig(gtksourceview-2.0)
 BuildRequires:	libglademm-devel >= 2.4.0
 BuildRequires:	libvte-devel >= 0.11.12
 BuildRequires:	libexpat-devel
@@ -52,16 +54,19 @@ libmlview is the essential library needed by the mlview application.
 %patch1 -p1 -b .gcc43
 %patch2 -p1 -b .strfmt
 %patch3 -p0
+%patch4 -p0
+%patch5 -p1
+%patch6 -p0
+%patch7 -p0
 
 %build
-%configure2_5x 
-
+NOCONFIGURE=yes gnome-autogen.sh
+%configure2_5x --disable-schemas-install
 %make
 
 %install
 rm -rf %{buildroot}
-GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std
-
+%makeinstall_std
 
 sed -i -e "s/mlview-app-icon.xpm/mlview-app-icon/" -e "s/mlv %/mlview %/" %{buildroot}%{_datadir}/applications/*
 
