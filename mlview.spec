@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig(gtksourceview-2.0)
 BuildRequires:	libglademm-devel >= 2.4.0
 BuildRequires:	libvte-devel >= 0.11.12
 BuildRequires:	libexpat-devel
+BuildRequires:	gnome-common
 BuildRequires:  desktop-file-utils
 Requires:	%{libname} = %{version}
 Requires(post):		GConf2 >= 2.3.3
