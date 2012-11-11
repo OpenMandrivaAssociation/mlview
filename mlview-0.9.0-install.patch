@@ -1,0 +1,9 @@
+--- pixmaps/Makefile.am.install	2011-06-12 15:01:58.000000000 +0200
++++ pixmaps/Makefile.am	2011-06-12 15:02:15.000000000 +0200
+@@ -1,6 +1,5 @@
+ privateicons_DATA = xml-element-node-open.png \
+ 	       xml-element-node.png \
+-	       xml-text-node.png \
+ 	       xml-root.png \
+ 	       xml-root-open.png \
+                xml-comment-node.png \

@@ -1,0 +1,36 @@
+diff -uNr mlview-0.9.0.ori/src/mlview-app-context.cc mlview-0.9.0/src/mlview-app-context.cc
+--- mlview-0.9.0.ori/src/mlview-app-context.cc	2009-05-18 18:17:36.000000000 +0200
++++ mlview-0.9.0/src/mlview-app-context.cc	2009-05-18 18:18:02.000000000 +0200
+@@ -724,7 +724,7 @@
+ 	if (warning_msg) {
+ 		mlview_utils_display_warning_dialog ((const gchar*)warning_msg) ;
+ 	} else if (warning_msg) {
+-		g_printerr (warning_msg);
++		g_printerr ("%s", warning_msg);
+ 	}
+ 
+ 	if (warning_msg) {
+diff -uNr mlview-0.9.0.ori/src/mlview-utils.cc mlview-0.9.0/src/mlview-utils.cc
+--- mlview-0.9.0.ori/src/mlview-utils.cc	2009-05-18 18:17:36.000000000 +0200
++++ mlview-0.9.0/src/mlview-utils.cc	2009-05-18 18:20:36.000000000 +0200
+@@ -4410,7 +4410,7 @@
+ 	err_dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL,
+ 	                                     a_msg_type,
+ 	                                     GTK_BUTTONS_CLOSE,
+-	                                     err_msg) ;
++	                                     "%s", err_msg) ;
+ 
+ 	g_return_if_fail (err_dialog) ;
+ 	gtk_dialog_set_default_response
+diff -uNr mlview-0.9.0.ori/src/recent-files/egg-recent-model.c mlview-0.9.0/src/recent-files/egg-recent-model.c
+--- mlview-0.9.0.ori/src/recent-files/egg-recent-model.c	2009-05-18 18:17:36.000000000 +0200
++++ mlview-0.9.0/src/recent-files/egg-recent-model.c	2009-05-18 18:18:02.000000000 +0200
+@@ -735,7 +735,7 @@
+ 	error = NULL;
+ 	if (!g_markup_parse_context_parse (ctx, content, strlen (content),
+ 					   &error)) {
+-		g_warning (error->message);
++		g_warning ("%s", error->message);
+ 		g_error_free (error);
+ 		error = NULL;
+ 		goto out;

@@ -1,0 +1,46 @@
+--- src/Makefile.am.link	2011-06-12 14:43:54.000000000 +0200
++++ src/Makefile.am	2011-06-12 14:55:31.000000000 +0200
+@@ -166,23 +166,22 @@
+ mlview_SOURCES  =  main.cc
+ mlviewctl_SOURCES = mlviewctl.cc mlview-dbus-cli.cc mlview-dbus-cli.h
+ 
+-LDADD=
+-mlview_LDADD=libmlview.la recent-files/libeggrecent.la
+-mlviewctl_LDADD=libmlviewdbusclient.la
++mlview_LDADD=libmlview.la recent-files/libeggrecent.la @MLVIEW_LIBS@
++mlviewctl_LDADD=libmlviewdbusclient.la @MLVIEW_LIBS@
+ 
+ libmlview_la_LDFLAGS= \
+ -version-info @LIBMLVIEW_VERSION_INFO@
++libmlview_la_LIBADD = $(MLVIEW_LIBS) recent-files/libeggrecent.la
+ 
+ libmlviewdbusclient_la_LDFLAGS= \
+ -version-info @LIBMLVIEW_VERSION_INFO@
++libmlviewdbusclient_la_LIBADD = $(GTKSOURCEVIEW_LIBS) $(LIBGNOMEUI2_LIBS)
+ 
+ INCLUDES = @MLVIEW_CFLAGS@ \
+ -DENABLE_NLS=1 -DDATADIR=\"${datadir}\" -DLIBDIR=\"${libdir}\" \
+ -DMLVIEW_LOCALEDIR=\"$(prefix)/share/locale\" -I$(top_srcdir)
+ 
+ 
+-mlview_LDFLAGS=@MLVIEW_LIBS@
+-mlviewctl_LDFLAGS=@MLVIEW_LIBS@
+ 
+ marshal:
+ 	glib-genmarshal --header --stdinc --prefix=mlview_marshal mlview-marshal.list> mlview-marshal.h
+--- tests/Makefile.am.link	2011-06-12 15:09:18.000000000 +0200
++++ tests/Makefile.am	2011-06-12 15:09:58.000000000 +0200
+@@ -1,10 +1,10 @@
+ noinst_PROGRAMS = testcompl testcompl2 testsafeptr
+ testcompl_SOURCES=testcompl.c
+-testcompl_LDFLAGS=@MLVIEW_LIBS@
++testcompl_LDADD=$(top_builddir)/src/libmlview.la $(top_builddir)/src/recent-files/libeggrecent.la @MLVIEW_LIBS@
+ testcompl2_SOURCES=testcompl2.cc
+-testcompl2_LDFLAGS=@MLVIEW_LIBS@
++testcompl2_LDADD=$(top_builddir)/src/libmlview.la $(top_builddir)/src/recent-files/libeggrecent.la @MLVIEW_LIBS@
+ testsafeptr_SOURCES=testsafeptr.cc
+-testsafeptr_LDFLAGS=@MLVIEW_LIBS@
++testsafeptr_LDADD=$(top_builddir)/src/libmlview.la $(top_builddir)/src/recent-files/libeggrecent.la @MLVIEW_LIBS@
+ 
+ LDADD=$(top_builddir)/src/libmlview.la $(top_builddir)/src/recent-files/libeggrecent.la
+ INCLUDES=-I$(top_srcdir)/src @MLVIEW_CFLAGS@

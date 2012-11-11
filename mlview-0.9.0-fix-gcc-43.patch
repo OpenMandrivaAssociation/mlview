@@ -1,0 +1,11 @@
+diff -uNr mlview-0.9.0.ori/src/mlview-validator.cc mlview-0.9.0/src/mlview-validator.cc
+--- mlview-0.9.0.ori/src/mlview-validator.cc	2009-05-18 18:07:39.000000000 +0200
++++ mlview-0.9.0/src/mlview-validator.cc	2009-05-18 18:08:55.000000000 +0200
+@@ -23,6 +23,7 @@
+  *See COPYRIGHT file for copyright information.
+  */
+ 
++#include <memory>
+ #include "mlview-validator.h"
+ #include "mlview-safe-ptr-utils.h"
+ 

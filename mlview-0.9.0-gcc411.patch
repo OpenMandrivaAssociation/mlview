@@ -1,0 +1,50 @@
+--- ./src/mlview-source-view.h~	2005-08-07 09:42:28.000000000 +0200
++++ ./src/mlview-source-view.h	2006-05-20 16:20:16.000000000 +0200
+@@ -53,7 +53,7 @@
+ 
+ 	enum MlViewStatus set_default_options () ;
+ 
+-	MlViewXMLDocument* SourceView::get_document () ;
++	MlViewXMLDocument* get_document () ;
+ 
+ 	GtkUIManager * get_ui_manager () ;
+ 
+--- ./src/mlview-tree-view.h~	2005-07-22 21:14:28.000000000 +0200
++++ ./src/mlview-tree-view.h	2006-05-20 16:19:50.000000000 +0200
+@@ -178,7 +178,7 @@
+ 
+ 	enum MlViewStatus build_app_edit_menu () ;
+ 
+-	GtkDialog * TreeView::get_expand_tree_dialog ()  ;
++	GtkDialog * get_expand_tree_dialog ()  ;
+ 
+ 	void clear_completion_popup_submenus () ;
+ 
+--- ./src/mlview-plugin.h~	2006-05-20 16:39:25.000000000 +0200
++++ ./src/mlview-plugin.h	2006-05-20 16:27:52.000000000 +0200
+@@ -46,12 +46,12 @@
+ 		
+ 		//forbid assignation/copy
+ 		Plugin& operator= (Plugin const&) ;
+-		Plugin::Plugin (Plugin const&) ;
++		Plugin (Plugin const&) ;
+ 
+ 	public:
+ 		Plugin (const PluginDescriptor &a_descr) ;
+ 
+-		Plugin::Plugin (const UString &a_url) ;
++		Plugin (const UString &a_url) ;
+ 		
+ 		virtual ~Plugin () ;
+ 		
+--- ./src/mlview-editor.cc~	2005-08-07 09:42:28.000000000 +0200
++++ ./src/mlview-editor.cc	2006-05-20 16:29:00.000000000 +0200
+@@ -157,7 +157,7 @@
+ 			contextual_menu (NULL)
+ 	{}
+ 
+-	static void EditorPriv::schemas_window_destroy_cb
++	static void schemas_window_destroy_cb
+ 	(GtkWidget *a_widget, struct DocumentWindowData *a_win) ;
+ 
+ 	static void validation_window_destroy_cb
