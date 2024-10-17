@@ -10,7 +10,7 @@ Version:	%{version}
 Release:	%{release}
 License:	GPLv2+
 Group:		Editors
-URL:		http://mlview.org/
+URL:		https://mlview.org/
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 
 Source:		ftp://ftp.gnome.org/pub/gnome/sources/%{name}/%{version}/%{name}-%{version}.tar.bz2
