@@ -22,6 +22,11 @@ Patch4:		mlview-0.9.0-gcc45.patch
 Patch5:		mlview-0.9.0-gtksourceview2.patch
 Patch6:		mlview-0.9.0-ac_version.patch
 Patch7:		mlview-0.9.0-install.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libgnomeui2-devel >= 2.2.0
 BuildRequires:	gtk+2-devel >= 2.2.0
 BuildRequires:	libxml2-devel >= 2.4.30
